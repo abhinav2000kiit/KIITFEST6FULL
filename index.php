@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
-
+<?php session_start(); ?>
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -95,11 +95,15 @@
                 <p id="cuHeader1">Campus Ambassador Programme</p>
                 <p id="cuHeader2">KIIT FEST <sub>6.0</sub></p>
 
-                <div id="buttoncu">    
+                <div id="buttoncu">   
+                <?php if(!isset($_SESSION['id']) && !isset($_SESSION['role'])){ ?> 
                   <button class="btn btn--green register__btn cuButton animation bounceIn"  data-toggle="modal"  onclick="document.getElementById('id01').style.display='block'">Register now</button>
                   <button class="btn btn--green register__btn cuButton animation bounceIn"  data-toggle="modal"  onclick="document.getElementById('id02').style.display='block'">login</button>
+                <?php } ?>
                   <a href="#leaderboardsection"><button class="btn btn--green register__btn cuButton animation bounceIn">CU Leaderboard</button></a>
-              </div>
+                <?php if(isset($_SESSION['id']) && isset($_SESSION['role'])){ ?> <a href="dashboard/"><button class="btn btn--green register__btn cuButton animation bounceIn">Dashboard</button></a>
+                <?php } ?>
+                </div>
             </div>                      
          </header>
 
