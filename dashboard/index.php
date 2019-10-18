@@ -42,6 +42,8 @@
         if(mysqli_num_rows($qry_result)>0){
           $row = mysqli_fetch_array($qry_result);
     ?>
+
+    <a href="logout/"><button style="float:right;font-size:20px;padding:5px;border:0;background-color:rgba(0,0,0,0); color:#eb3b81;"> Logout </button></a>
         <section style="padding-top: 40px; padding-bottom: 30px; background-color: blanchedalmond;">
             <div class="row d-flex justify-content-center">    
                 <div class="text-center">

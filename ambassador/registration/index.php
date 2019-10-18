@@ -76,7 +76,7 @@
       redirect('../../');
     }
     $acpassword=mysqli_real_escape_string($con,$acpassword);
-    $acpassword=md5($acpassword);
+
 
     if(isset($_POST['acwhatsapp'])) $acwhatsapp=$_POST['acwhatsapp'];
     else{
