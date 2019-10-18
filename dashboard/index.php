@@ -53,6 +53,14 @@
                 </div>
             </div>    
         </section> 
+         
+        <?php
+          $selq="SELECT * FROM chickensoup WHERE code=$myid AND Prole=2;";
+          $qry_result=mysqli_query($con, $selq) or die(mysqli_error($con));
+          if(mysqli_num_rows($qry_result)>0){
+              
+        ?>
+
         <section style="padding-top: 40px; padding-bottom: 30px; background-color: burlywood;">
             <div class="row d-flex justify-content-center"> 
                     <h1>Your Referred Status</h1> <br>  
@@ -65,25 +73,31 @@
                         </tr>
                     </thead>
                     <tbody style="background-color: white;">
+                    <?php
+                      $sno=0;
+                        while ($crow = mysqli_fetch_array($qry_result) ) {
+                          $sno+=1;
+                    ?>
                         <tr>
-                        <td>01</td>
-                        <td>Doe</td>
-                        <td>YES</td>
+                        <td><?php echo $sno; ?></td>
+                        <td><?php echo $crow['Pname']; ?></td>
+                        <?php
+                          $pay=$crow['Paid'];
+                          if ($pay==0) $pay="YES";
+                          else $pay="NO";
+                        ?>
+                        <td><?php echo $pay; ?></td>
                         </tr>
-                        <tr>
-                        <td>02</td>
-                        <td>Moe</td>
-                        <td>NO</td>
-                        </tr>
-                        <tr>
-                        <td>03</td>
-                        <td>Dooley</td>
-                        <td>YES</td>
-                        </tr>
+                    <?php
+                        }
+                    ?>
                     </tbody>
                 </table>
             </div>    
         </section>
+        <?php
+          } 
+        ?>
         
                          <!-- Roles Section Start -->
                          <section style="padding-top: 40px; padding-bottom: 30px; background-color: rgb(238, 138, 138);">

@@ -188,7 +188,7 @@
       $_SESSION['role']=$row['Prole'];
       echo $_SESSION['id'];
      // header('../../dashboard');
-      //redirect("../../dashboard");
+      redirect("../../dashboard");
 
     }
     }else{
