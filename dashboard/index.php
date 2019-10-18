@@ -34,18 +34,22 @@
     <body>
     <?php 
 
-    if(isset($_SESSION['id']) && isset($_SESSION['rolw'])){
-      if ($_SESSION['id']==1){
-
+    if(isset($_SESSION['id']) && isset($_SESSION['role'])){
+      if ($_SESSION['role']==1){
+        $myid=$_SESSION['id'];
+        $selq="SELECT * FROM chickensoup WHERE idno=$myid;";
+        $qry_result=mysqli_query($con, $selq) or die(mysqli_error($con));
+        if(mysqli_num_rows($qry_result)>0){
+          $row = mysqli_fetch_array($qry_result);
     ?>
         <section style="padding-top: 40px; padding-bottom: 30px; background-color: blanchedalmond;">
             <div class="row d-flex justify-content-center">    
                 <div class="text-center">
                     <img style="border-radius: 50%;" src="https://mdbootstrap.com/img/logo/mdb192x192.jpg" class="img-fluid" alt="">
                     <br><br><br><br>
-                    <h1>AMBASSADOR NAME</h1>
-                    <h3>College's Name</h3>
-                    <h3>Place Name</h3>
+                    <h1><?php echo $row['Pname'];  ?></h1>
+                    <h3><?php echo $row['College'];  ?></h3>
+                    <h3><?php echo $row['District'];  ?></h3>
                 </div>
             </div>    
         </section> 
@@ -227,12 +231,12 @@
                           <!-- Roles Section End -->
     <?php
       }else{
-       // redirect('../');
-       echo "Wrong role";
-      }
+        redirect('../');
+      }}else{
+       redirect('../');
+       }
   }else{
-    // redirect('../');
-    echo "Wrong session";
+     redirect('../');
   }
   ?>
 
