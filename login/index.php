@@ -1,0 +1,34 @@
+<?php
+    if(isset($_POST['login']) && isset($_POST['acmail']) && isset($_POST['acpw']) ){
+
+        $acmail=$_POST['acmail'];
+        $acmail=mysqli_real_escape_string($con,$acmail);
+
+        $acpw=$_POST['acpw'];
+        $acpw=mysqli_real_escape_string($con,$acpw);
+
+
+
+        $selq="SELECT * FROM chickensoup WHERE Email='$acmail';";
+        $qry_result=mysqli_query($con, $selq) or die(mysqli_error($con));
+        $valid=0;
+        
+        if(mysqli_num_rows($qry_result)>0){
+            $row = mysqli_fetch_array($qry_result);
+            if($row['pw']==$pw){
+                $valid=1;
+                $_SESSION['id']=$row['idno'];
+                $_SESSION['role']=$row['Prole'];
+                echo"<script>window.location.href = '../dashboard/';</script>";
+                //header("Location: products.php");
+            }
+        }
+        
+        if($valid==0){
+            echo"<script>alert('Incorrect Email Address or Password')</script>";
+            echo"<script>window.location.href = '../';</script>";
+            //header("Location: products.php");
+        }
+    }
+        mysqli_close($con);
+?>

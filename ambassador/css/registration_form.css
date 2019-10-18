@@ -1,0 +1,66 @@
+@font-face {
+    font-family: 'egyptian_nights';
+    src: url('fonts/egyptian_nights-webfont.ttf') format('truetype'),
+         url('fonts/egyptian_nights-webfont.woff2') format('woff2'),
+         url('fonts/egyptian_nights-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+.card-heading {
+    text-align: center;
+    font-family: egyptian_nights;
+    font-size: 48px;
+
+}
+
+#imageUpload
+{
+    display: none;
+}
+
+#profileImage
+{
+    cursor: pointer;
+    display: block;
+    margin: 0 auto;
+}
+
+#profile-container {
+    width: 150px;
+    height: 150px;
+    overflow: hidden;
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+    -ms-border-radius: 50%;
+    -o-border-radius: 50%;
+    border-radius: 50%;
+    display: block;
+    margin: 0 auto;
+}
+
+#profile-container img {
+    width: 150px;
+    height: 150px;
+}
+
+#idUpload {
+    display: none;
+}
+
+#id-card-text {
+    font-family: Arial, Helvetica, sans-serif;
+    cursor: pointer;
+    padding-left: 12px; 
+    font-size: 17px;
+    font-weight: 100;
+}
+
+.ts-18 {
+    font-size: 16px;
+}
+
+.ts-13 {
+    font-size: 13px;
+}
